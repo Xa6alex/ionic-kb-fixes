@@ -77,8 +77,11 @@
     }
 }
 
+- (BOOL)disableScroll {
+    return _disableScroll;
+}
 
-- (void)setDisableScroll {
+- (void)setDisableScroll:(BOOL)disableScroll {
     if (disableScroll == _disableScroll) {
         return;
     }
