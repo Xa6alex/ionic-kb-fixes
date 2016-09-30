@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
-    id="ionic-plugin-keyboard"
+    id="ionic-plugin-keyboard-modified"
     version="2.2.1">
     <name>Keyboard</name>
-    <description>Ionic Keyboard Plugin</description>
+    <description>Ionic Keyboard Plugin - modified</description>
     <license>Apache 2.0</license>
-    <keywords>Ionic,keyboard</keywords>
-    <repo>https://github.com/driftyco/ionic-plugin-keyboard.git</repo>
-    <issue>https://github.com/driftyco/ionic-plugin-keyboard/issues</issue>
+    <keywords>Ionic</keywords>
+    <repo>https://github.com/Xa6alex/ionic-kb-fixes.git</repo>
+    <issue>https://github.com/Xa6alex/ionic-kb-fixe/issues</issue>
 
 
     <!-- android -->

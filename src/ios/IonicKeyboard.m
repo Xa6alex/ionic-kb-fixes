@@ -6,6 +6,7 @@
 
 @synthesize hideKeyboardAccessoryBar = _hideKeyboardAccessoryBar;
 @synthesize disableScroll = _disableScroll;
+@synthesize moveTop = _moveTop;
 //@synthesize styleDark = _styleDark;
 
 - (void)pluginInitialize {
@@ -52,11 +53,21 @@
                                }];
 }
 
-- (BOOL)disableScroll {
-    return _disableScroll;
+- (void)moveTop {
+    return _moveTop;
 }
 
-- (void)setDisableScroll:(BOOL)disableScroll {
+- (void)moveTop {
+    [self.webView.scrollView setContentOffset: CGPointZero];
+}
+
+- (void) moveTop:(CDVInvokedUrlCommand*)command {
+    [self.webView.scrollView setContentOffset: CGPointZero];
+
+}
+
+
+- (void)setDisableScroll {
     if (disableScroll == _disableScroll) {
         return;
     }

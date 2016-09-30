@@ -15,6 +15,11 @@ Keyboard.close = function() {
     exec(null, null, "Keyboard", "close", []);
 };
 
+Keyboard.moveTop = function() {
+    exec(null, null, "Keyboard", "moveTop", []);
+};
+
+
 Keyboard.show = function() {
     console.warn('Showing keyboard not supported in iOS due to platform limitations.')
     console.warn('Instead, use input.focus(), and ensure that you have the following setting in your config.xml: \n');

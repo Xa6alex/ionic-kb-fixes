@@ -1,8 +1,8 @@
 {
-  "name": "ionic-plugin-keyboard",
+  "name": "ionic-plugin-keyboard-modified",
   "version": "2.2.1",
   "cordova": {
-    "id": "ionic-plugin-keyboard",
+    "id": "ionic-plugin-keyboard-modified",
     "platforms": [
       "android",
       "ios",
@@ -11,9 +11,9 @@
       "windows"
     ]
   },
-  "description": "Ionic Keyboard Plugin",
-  "repository": "https://github.com/driftyco/ionic-plugin-keyboard.git",
-  "issue": "https://github.com/driftyco/ionic-plugin-keyboard/issues",
+  "description": "Ionic Keyboard Plugin - modified",
+  "repository": "https://github.com/Xa6alex/ionic-kb-fixes.git",
+  "issue": "https://github.com/Xa6alex/ionic-kb-fixes/issues",
   "keywords": [
     "ionic",
     "cordova",
