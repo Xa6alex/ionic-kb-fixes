@@ -58,7 +58,7 @@
     return _moveTop;
 }
 
-- (void)moveTop:(BOOL)moveTop {
+- (void)setMoveTop:(BOOL)moveTop {
     [self.webView.scrollView setContentOffset: CGPointZero];
     _moveTop = moveTop;
 }
