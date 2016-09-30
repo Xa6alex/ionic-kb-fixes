@@ -60,6 +60,9 @@
 
 - (void)setMoveTop:(BOOL)moveTop {
     [self.webView.scrollView setContentOffset: CGPointZero];
+    if (moveTop == _moveTop) {
+        return;
+    }
     _moveTop = moveTop;
 }
 
@@ -70,7 +73,7 @@
     }
     id value = [command.arguments objectAtIndex:0];
     if (value != [NSNull null]) {
-      self._moveTop = [value boolValue];
+      self.moveTop = [value boolValue];
     }
 }
 
