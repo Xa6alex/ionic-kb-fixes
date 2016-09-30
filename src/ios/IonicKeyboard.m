@@ -24,6 +24,7 @@
     //set defaults
     self.hideKeyboardAccessoryBar = YES;
     self.disableScroll = NO;
+    self.moveTop = NO;
     //self.styleDark = NO;
     
     NSNotificationCenter* nc = [NSNotificationCenter defaultCenter];
@@ -53,17 +54,24 @@
                                }];
 }
 
-- (void)moveTop {
+- (BOOL)moveTop {
     return _moveTop;
 }
 
-- (void)moveTop {
+- (void)moveTop:(BOOL)moveTop {
     [self.webView.scrollView setContentOffset: CGPointZero];
+    _moveTop = moveTop;
 }
 
 - (void) moveTop:(CDVInvokedUrlCommand*)command {
     [self.webView.scrollView setContentOffset: CGPointZero];
-
+    if (!command.arguments || ![command.arguments count]){
+      return;
+    }
+    id value = [command.arguments objectAtIndex:0];
+    if (value != [NSNull null]) {
+      self._moveTop = [value boolValue];
+    }
 }
 
 

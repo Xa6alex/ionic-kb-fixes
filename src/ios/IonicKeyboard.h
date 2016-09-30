@@ -10,7 +10,7 @@
 
 @property (readwrite, assign) BOOL hideKeyboardAccessoryBar;
 @property (readwrite, assign) BOOL disableScroll;
-@property (readwrite, assign) VOID moveTop;
+@property (readwrite, assign) BOOL moveTop;
 //@property (readwrite, assign) BOOL styleDark;
 
 @end
