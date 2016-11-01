@@ -64,11 +64,10 @@
 
 
 -  (void)textFieldDidBeginEditing:(UITextField *)textField {
-        textField.delegate = self;
-        textField.returnKeyType = UIReturnKeyType.Go;
-       [textField setReturnKeyType:UIReturnKeyGo];
+       textField.delegate = self;
+        [textField setReturnKeyType:UIReturnKeyGo];
        [textField reloadInputViews];
-        [self.commandDelegate evalJs:@"console.log('xxxx1');document.blabla && document.blabla(); cordova.fireWindowEvent('native.goButtonPressed'); "];
+       [self.commandDelegate evalJs:@"console.log('xxxx1');document.blabla && document.blabla(); cordova.fireWindowEvent('native.goButtonPressed'); "];
 }
 
 -   (void)textFieldDidEndEditing:(UITextField *)textField {
