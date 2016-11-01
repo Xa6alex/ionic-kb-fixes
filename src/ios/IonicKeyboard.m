@@ -1,4 +1,4 @@
-#import "IonicKeyboard.h"
+  #import "IonicKeyboard.h"
 // #import "UIWebViewExtension.h"
 #import <Cordova/CDVAvailability.h>
 
@@ -53,17 +53,16 @@
                                }];
 }
 
+-   (void)textFieldDidBeginEditing:(UITextField *)textField {
+        //Give your specifications here while editing
+        self.webView.scrollView.frame = CGRectMake(0,0,320,285);
+        //If you are using tableview,give the constraints for tableview
+    }
 
-- (void)textFieldDidBeginEditing:(UITextField *)textField{
-    // in case you have more than one text fields in the same view
-    [self.webView.scrollView setContentOffset: CGPointZero];
-
-       // change the web view height here, you can also animate it using UIView beginAnimations
-    //   CGRect frame = self.webView.frame;
-    //  frame.size.height = 200;
-    //   self.webView.frame = frame;
+-   (void)textFieldDidEndEditing:(UITextField *)textField {
+    //Give your specifications here after editing completed
+     self.webView.scrollView.frame = CGRectMake(0,0,320,586);
 }
-
 
 - (BOOL)moveTop {
     return _moveTop;
