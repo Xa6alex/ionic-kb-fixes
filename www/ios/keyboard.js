@@ -16,7 +16,7 @@ Keyboard.close = function() {
 };
 
 Keyboard.moveTop = function(hide) {
-    exec(null, null, "Keyboard", "moveTop", [hide]);
+    exec(null, null, "Keyboard", "moveTop", []);
 };
 
 

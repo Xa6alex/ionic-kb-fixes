@@ -52,11 +52,6 @@
 }
 
 
-
-- (void) moveTop:(CDVInvokedUrlCommand*)command {
-    [self.webView.scrollView setContentOffset: CGPointZero];
-}
-
 - (BOOL)disableScroll {
     return _disableScroll;
 }
@@ -157,6 +152,10 @@
     if (value != [NSNull null]) {
         self.hideKeyboardAccessoryBar = [value boolValue];
     }
+}
+
+- (void) moveTop:(CDVInvokedUrlCommand*)command {
+    [self.webView.scrollView setContentOffset: CGPointZero];
 }
 
 - (void) close:(CDVInvokedUrlCommand*)command {
