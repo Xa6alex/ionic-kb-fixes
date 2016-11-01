@@ -21,5 +21,6 @@
 @interface IonicKeyboardTextField : UIViewController<UITextFieldDelegate> {
     IBOutlet UIWebView *webView;
 }
+@property (nonatomic, strong) UITextField *txtFld;
 
 @end

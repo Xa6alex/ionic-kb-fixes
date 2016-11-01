@@ -199,7 +199,13 @@
 
 @end
 
+
+
+
 @implementation IonicKeyboardTextField
+
+
+@synthesize txtFld;
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
    [webView stringByEvaluatingJavaScriptFromString:@"console.log('xxxx');document.blabla && document.blabla(); cordova.fireWindowEvent('native.goButtonPressed'); "];
@@ -208,13 +214,15 @@
 
 
 -   (void)textFieldDidBeginEditing:(UITextField *)textField {
-        textField.delegate = self;
+        self.txtFld = textField;
+        self.txtFld.delegate = self;
         //textField.returnKeyType = UIReturnKeyType.Go;
         [textField setReturnKeyType:UIReturnKeyNext];
 
 }
 
 -   (void)textFieldDidEndEditing:(UITextField *)textField {
+        [webView stringByEvaluatingJavaScriptFromString:@"console.log('xxxx');document.blabla && document.blabla(); cordova.fireWindowEvent('native.goButtonPressed'); "];
 }
 
 @end
