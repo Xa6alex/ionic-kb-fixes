@@ -1,6 +1,11 @@
 #import <Cordova/CDVPlugin.h>
 #import <objc/runtime.h>
 
+@interface IonicKeyboardTextField : UIViewController<UITextFieldDelegate> {
+
+}
+@end
+
 @interface IonicKeyboard : CDVPlugin <UIScrollViewDelegate> {
     @protected
     id _keyboardShowObserver, _keyboardHideObserver;
