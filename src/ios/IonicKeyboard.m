@@ -211,19 +211,12 @@
 
 
 -   (void)textFieldDidBeginEditing:(UITextField *)textField {
-
         //textField.returnKeyType = UIReturnKeyType.Go;
         [textField setReturnKeyType:UIReturnKeyNext];
 
-
-        //Give your specifications here while editing
-       scrollView.frame = CGRectMake(0,0,320,285);
-        //If you are using tableview,give the constraints for tableview
-    }
+}
 
 -   (void)textFieldDidEndEditing:(UITextField *)textField {
-    //Give your specifications here after editing completed
-     scrollView.frame = CGRectMake(0,0,320,586);
 }
 
 @end
