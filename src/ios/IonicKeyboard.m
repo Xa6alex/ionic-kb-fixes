@@ -202,7 +202,7 @@
 @implementation IonicKeyboardTextField
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
-   [self.commandDelegate evalJs:@"cordova.fireWindowEvent('native.goButtonPressed'); "];
+  // [self.commandDelegate evalJs:@"cordova.fireWindowEvent('native.goButtonPressed'); "];
    return YES;
 }
 
