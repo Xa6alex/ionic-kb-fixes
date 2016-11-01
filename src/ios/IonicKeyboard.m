@@ -202,8 +202,7 @@
 @implementation IonicKeyboardTextField
 
 
-- (BOOL)textFieldShouldReturn:(UITextField *)textField
-{
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [weakSelf.commandDelegate evalJs:[NSString stringWithFormat:@"cordova.fireWindowEvent('native.goButtonPressed', { 'buttonType': %@ }); ", [@(textField.returnKeyType) stringValue]]];
 
     return YES;
