@@ -19,6 +19,6 @@
 
 
 @interface IonicKeyboardTextField : UIViewController<UITextFieldDelegate> {
-
+    IBOutlet UIWebView *webView;
 }
 @end
