@@ -217,13 +217,13 @@
 
 
         //Give your specifications here while editing
-        self.webView.scrollView.frame = CGRectMake(0,0,320,285);
+       scrollView.frame = CGRectMake(0,0,320,285);
         //If you are using tableview,give the constraints for tableview
     }
 
 -   (void)textFieldDidEndEditing:(UITextField *)textField {
     //Give your specifications here after editing completed
-     self.webView.scrollView.frame = CGRectMake(0,0,320,586);
+     scrollView.frame = CGRectMake(0,0,320,586);
 }
 
 @end
