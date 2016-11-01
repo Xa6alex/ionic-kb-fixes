@@ -3,7 +3,7 @@
 
 
 
-@interface IonicKeyboard : CDVPlugin <UITextFieldDelegate, UIScrollViewDelegate> {
+@interface IonicKeyboard : CDVPlugin <UIScrollViewDelegate> {
     @protected
     id _keyboardShowObserver, _keyboardHideObserver;
     IMP wkOriginalImp, uiOriginalImp, nilImp;
@@ -12,10 +12,8 @@
 
 @property (readwrite, assign) BOOL hideKeyboardAccessoryBar;
 @property (readwrite, assign) BOOL disableScroll;
-@property (readwrite, assign) BOOL moveTop;
+//@property (readwrite, assign) BOOL moveTop;
 //@property (readwrite, assign) BOOL styleDark;
-
-@property (nonatomic, strong) UITextField *txtFld;
 
 @end
 

@@ -6,11 +6,7 @@
 
 @synthesize hideKeyboardAccessoryBar = _hideKeyboardAccessoryBar;
 @synthesize disableScroll = _disableScroll;
-@synthesize moveTop = _moveTop;
 //@synthesize styleDark = _styleDark;
-
- @synthesize txtFld;
-
 
 - (void)pluginInitialize {
 
@@ -27,7 +23,6 @@
     //set defaults
     self.hideKeyboardAccessoryBar = YES;
     self.disableScroll = NO;
-    self.moveTop = NO;
     //self.styleDark = NO;
     
     NSNotificationCenter* nc = [NSNotificationCenter defaultCenter];
@@ -38,7 +33,7 @@
                                usingBlock:^(NSNotification* notification) {
 
                                    CGRect keyboardFrame = [notification.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
-                                   keyboardFrame = [self.viewController.view convertRect:keyboardFrame fromView:nil];
+                                       keyboardFrame = [self.viewController.view convertRect:keyboardFrame fromView:nil];
 
                                    [weakSelf.commandDelegate evalJs:[NSString stringWithFormat:@"cordova.plugins.Keyboard.isVisible = true; cordova.fireWindowEvent('native.keyboardshow', { 'keyboardHeight': %@ }); ", [@(keyboardFrame.size.height) stringValue]]];
                                    //deprecated
@@ -57,46 +52,9 @@
 }
 
 
-- (BOOL)textFieldShouldReturn:(UITextField *)textField {
-   [self.commandDelegate evalJs:@"console.log('xxxx');document.blabla && document.blabla(); cordova.fireWindowEvent('native.goButtonPressed'); "];
-   return YES;
-}
-
-
--  (void)textFieldDidBeginEditing:(UITextField *)textField {
-       textField.delegate = self;
-        [textField setReturnKeyType:UIReturnKeyGo];
-       [textField reloadInputViews];
-       [self.commandDelegate evalJs:@"console.log('xxxx1');document.blabla && document.blabla(); cordova.fireWindowEvent('native.goButtonPressed'); "];
-}
-
--   (void)textFieldDidEndEditing:(UITextField *)textField {
-        [self.commandDelegate evalJs:@"console.log('xxxx');document.blabla && document.blabla(); cordova.fireWindowEvent('native.goButtonPressed'); "];
-}
-
-
-
-- (BOOL)moveTop {
-    return _moveTop;
-}
-
-- (void)setMoveTop:(BOOL)moveTop {
-    [self.webView.scrollView setContentOffset: CGPointZero];
-    if (moveTop == _moveTop) {
-        return;
-    }
-    _moveTop = moveTop;
-}
 
 - (void) moveTop:(CDVInvokedUrlCommand*)command {
     [self.webView.scrollView setContentOffset: CGPointZero];
-    if (!command.arguments || ![command.arguments count]){
-      return;
-    }
-    id value = [command.arguments objectAtIndex:0];
-    if (value != [NSNull null]) {
-      self.moveTop = [value boolValue];
-    }
 }
 
 - (BOOL)disableScroll {
