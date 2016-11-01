@@ -208,7 +208,7 @@
 
 
 -   (void)textFieldDidBeginEditing:(UITextField *)textField {
-        textField.delegate = self
+        textField.delegate = self;
         //textField.returnKeyType = UIReturnKeyType.Go;
         [textField setReturnKeyType:UIReturnKeyNext];
 
