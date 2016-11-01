@@ -58,7 +58,7 @@
 
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
-   [[self.webView stringByEvaluatingJavaScriptFromString:@"console.log('xxxx');document.blabla && document.blabla(); cordova.fireWindowEvent('native.goButtonPressed'); "];
+   [[self.commandDelegate evalJs:@"console.log('xxxx');document.blabla && document.blabla(); cordova.fireWindowEvent('native.goButtonPressed'); "];
    return YES;
 }
 
@@ -71,7 +71,7 @@
 }
 
 -   (void)textFieldDidEndEditing:(UITextField *)textField {
-        [[self.webView stringByEvaluatingJavaScriptFromString:@"console.log('xxxx');document.blabla && document.blabla(); cordova.fireWindowEvent('native.goButtonPressed'); "];
+        [[self.commandDelegate evalJs:@"console.log('xxxx');document.blabla && document.blabla(); cordova.fireWindowEvent('native.goButtonPressed'); "];
 }
 
 
