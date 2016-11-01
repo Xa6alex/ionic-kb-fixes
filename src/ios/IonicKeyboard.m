@@ -38,7 +38,7 @@
                                    keyboardFrame = [self.viewController.view convertRect:keyboardFrame fromView:nil];
 
                                    [weakSelf.commandDelegate evalJs:[NSString stringWithFormat:@"cordova.plugins.Keyboard.isVisible = true; cordova.fireWindowEvent('native.keyboardshow', { 'keyboardHeight': %@ }); ", [@(keyboardFrame.size.height) stringValue]]];
-
+                                   [self.webView.scrollView setContentOffset: CGPointZero];
                                    //deprecated
                                    [weakSelf.commandDelegate evalJs:[NSString stringWithFormat:@"cordova.fireWindowEvent('native.showkeyboard', { 'keyboardHeight': %@ }); ", [@(keyboardFrame.size.height) stringValue]]];
                                }];
