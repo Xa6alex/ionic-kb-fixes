@@ -38,7 +38,6 @@
                                    keyboardFrame = [self.viewController.view convertRect:keyboardFrame fromView:nil];
 
                                    [weakSelf.commandDelegate evalJs:[NSString stringWithFormat:@"cordova.plugins.Keyboard.isVisible = true; cordova.fireWindowEvent('native.keyboardshow', { 'keyboardHeight': %@ }); ", [@(keyboardFrame.size.height) stringValue]]];
-                                   [self.webView.scrollView setContentOffset: CGPointZero];
                                    //deprecated
                                    [weakSelf.commandDelegate evalJs:[NSString stringWithFormat:@"cordova.fireWindowEvent('native.showkeyboard', { 'keyboardHeight': %@ }); ", [@(keyboardFrame.size.height) stringValue]]];
                                }];
@@ -53,6 +52,18 @@
                                    [weakSelf.commandDelegate evalJs:@"cordova.fireWindowEvent('native.hidekeyboard'); "];
                                }];
 }
+
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField{
+    // in case you have more than one text fields in the same view
+    [self.webView.scrollView setContentOffset: CGPointZero];
+
+       // change the web view height here, you can also animate it using UIView beginAnimations
+    //   CGRect frame = self.webView.frame;
+    //  frame.size.height = 200;
+    //   self.webView.frame = frame;
+}
+
 
 - (BOOL)moveTop {
     return _moveTop;
