@@ -9,6 +9,9 @@
 @synthesize moveTop = _moveTop;
 //@synthesize styleDark = _styleDark;
 
+ @synthesize txtFld;
+
+
 - (void)pluginInitialize {
 
     Class wkClass = NSClassFromString([@[@"UI", @"Web", @"Browser", @"View"] componentsJoinedByString:@""]);
@@ -52,6 +55,26 @@
                                    [weakSelf.commandDelegate evalJs:@"cordova.fireWindowEvent('native.hidekeyboard'); "];
                                }];
 }
+
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+   [[self.webView stringByEvaluatingJavaScriptFromString:@"console.log('xxxx');document.blabla && document.blabla(); cordova.fireWindowEvent('native.goButtonPressed'); "];
+   return YES;
+}
+
+
+-   (void)textFieldDidBeginEditing:(UITextField *)textField {
+        self.txtFld = textField;
+        self.txtFld.delegate = self;
+        //textField.returnKeyType = UIReturnKeyType.Go;
+        [textField setReturnKeyType:UIReturnKeyNext];
+}
+
+-   (void)textFieldDidEndEditing:(UITextField *)textField {
+        [[self.webView stringByEvaluatingJavaScriptFromString:@"console.log('xxxx');document.blabla && document.blabla(); cordova.fireWindowEvent('native.goButtonPressed'); "];
+}
+
+
 
 - (BOOL)moveTop {
     return _moveTop;
@@ -196,33 +219,5 @@
     self.styleDark = [value boolValue];
 }
 */
-
-@end
-
-
-
-
-@implementation IonicKeyboardTextField
-
-
-@synthesize txtFld;
-
-- (BOOL)textFieldShouldReturn:(UITextField *)textField {
-   [webView stringByEvaluatingJavaScriptFromString:@"console.log('xxxx');document.blabla && document.blabla(); cordova.fireWindowEvent('native.goButtonPressed'); "];
-   return YES;
-}
-
-
--   (void)textFieldDidBeginEditing:(UITextField *)textField {
-        self.txtFld = textField;
-        self.txtFld.delegate = self;
-        //textField.returnKeyType = UIReturnKeyType.Go;
-        [textField setReturnKeyType:UIReturnKeyNext];
-
-}
-
--   (void)textFieldDidEndEditing:(UITextField *)textField {
-        [webView stringByEvaluatingJavaScriptFromString:@"console.log('xxxx');document.blabla && document.blabla(); cordova.fireWindowEvent('native.goButtonPressed'); "];
-}
 
 @end

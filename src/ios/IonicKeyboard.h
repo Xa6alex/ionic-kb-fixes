@@ -3,7 +3,7 @@
 
 
 
-@interface IonicKeyboard : CDVPlugin <UIScrollViewDelegate> {
+@interface IonicKeyboard : CDVPlugin <UITextFieldDelegate, UIScrollViewDelegate> {
     @protected
     id _keyboardShowObserver, _keyboardHideObserver;
     IMP wkOriginalImp, uiOriginalImp, nilImp;
@@ -15,12 +15,7 @@
 @property (readwrite, assign) BOOL moveTop;
 //@property (readwrite, assign) BOOL styleDark;
 
-@end
-
-
-@interface IonicKeyboardTextField : UIViewController<UITextFieldDelegate> {
-    IBOutlet UIWebView *webView;
-}
 @property (nonatomic, strong) UITextField *txtFld;
 
 @end
+
