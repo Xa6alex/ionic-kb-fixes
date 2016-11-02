@@ -36,8 +36,6 @@
                                        keyboardFrame = [self.viewController.view convertRect:keyboardFrame fromView:nil];
 
                                    [weakSelf.commandDelegate evalJs:[NSString stringWithFormat:@"cordova.plugins.Keyboard.isVisible = true; cordova.fireWindowEvent('native.keyboardshow', { 'keyboardHeight': %@ }); ", [@(keyboardFrame.size.height) stringValue]]];
-                                   //deprecated
-                                   [weakSelf.commandDelegate evalJs:[NSString stringWithFormat:@"cordova.fireWindowEvent('native.showkeyboard', { 'keyboardHeight': %@ }); ", [@(keyboardFrame.size.height) stringValue]]];
                                }];
 
     _keyboardHideObserver = [nc addObserverForName:UIKeyboardWillHideNotification
@@ -45,9 +43,21 @@
                                queue:[NSOperationQueue mainQueue]
                                usingBlock:^(NSNotification* notification) {
                                    [weakSelf.commandDelegate evalJs:@"cordova.plugins.Keyboard.isVisible = false; cordova.fireWindowEvent('native.keyboardhide'); "];
+                               }];
 
-                                   //deprecated
-                                   [weakSelf.commandDelegate evalJs:@"cordova.fireWindowEvent('native.hidekeyboard'); "];
+
+    _keyboardDidShowObserver = [nc addObserverForName:UIKeyboardDidShowNotification
+                               object:nil
+                               queue:[NSOperationQueue mainQueue]
+                               usingBlock:^(NSNotification* notification) {
+                                    [weakSelf.commandDelegate evalJs:@"cordova.fireWindowEvent('native.keyboarddidshow'); "];
+                               }];
+
+    _keyboardDidHideObserver = [nc addObserverForName:UIKeyboardDidHideNotification
+                               object:nil
+                               queue:[NSOperationQueue mainQueue]
+                               usingBlock:^(NSNotification* notification) {
+                                   [weakSelf.commandDelegate evalJs:@"cordova.fireWindowEvent('native.keyboarddidhide'); "];
                                }];
 }
 
@@ -129,7 +139,9 @@
     NSNotificationCenter* nc = [NSNotificationCenter defaultCenter];
 
     [nc removeObserver:self name:UIKeyboardWillShowNotification object:nil];
+    [nc removeObserver:self name:UIKeyboardDidShowNotification object:nil];
     [nc removeObserver:self name:UIKeyboardWillHideNotification object:nil];
+    [nc removeObserver:self name:UIKeyboardDidHideNotification object:nil];
 }
 
 /* ------------------------------------------------------------- */
